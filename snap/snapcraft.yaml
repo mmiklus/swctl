@@ -1,0 +1,28 @@
+name: swctl
+version: git
+base: core22
+summary: StoneWork Command Line Tool
+description: |
+  StoneWork Command Line Tool helps you to install, run and configure
+  StoneWork, a high-performance data plane, modular control plane solution.
+
+grade: stable
+confinement: strict
+
+parts:
+  swctl:
+    plugin: go
+    source: https://github.com/PANTHEONtech/StoneWork
+    source-subdir: cmd/swctl
+    source-type: git
+
+apps:
+  swctl:
+    command: bin/swctl
+    plugs: 
+    - home
+    - network
+    - network-bind
+
+build-snaps:
+  - go
